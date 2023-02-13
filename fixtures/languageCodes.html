@@ -1,0 +1,35 @@
+<form id="translate-form">
+  <textarea id="text" name="text"></textarea>
+  <select id="dest_language" name="dest_language"></select>
+  <button id="submit-button">Translate</button>
+</form>
+
+<div id="translation"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var languageCodes = {};
+
+    $.getJSON('languageCodes.json', function(data) {
+      languageCodes = data;
+
+      var options = '';
+      $.each(data, function(key, value) {
+        options += '<option value="' + value + '">' + key + '</option>';
+      });
+      $('#dest_language').html(options);
+    });
+
+    $('#submit-button').click(function(event) {
+      event.preventDefault();
+
+      var text = $('#text').val();
+      var dest_language = $('#dest_language').val();
+
+      $.post('http://localhost:5000/translate', {text: text, dest_language: dest_language}, function(data) {
+        $('#translation').text(data);
+      });
+    });
+  });
+</script>
