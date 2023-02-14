@@ -25,6 +25,10 @@ def translateText(text, dest_language):
 
     return final_translation
 
+@app.route("/", methods=["GET"])
+def hello():
+    return jsonify({'status': "server is running... try hitting valid routes"})
+
 @app.route("/translate", methods=["POST"])
 def translate():
     text = request.form['text']
