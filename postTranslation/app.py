@@ -1,5 +1,11 @@
+# For converting text into specified language mentioned by user
+
+from flask import Flask, request, jsonify
 from translate import Translator
 import langdetect
+import requests
+
+app = Flask(__name__)
 
 def translateText(text, dest_language):
     # Detect the source language of the input text
@@ -21,12 +27,17 @@ def translateText(text, dest_language):
 
     return final_translation
 
-# Get the text and language codes from the user
-text = input("Enter the text to be translated: ")
-dest_language = input("Enter the target language code (e.g. hi for Hindi): ")
+@app.route("/", methods=["GET"])
+def hello():
+    return jsonify({'status': "server is running... try hitting valid routes"})
 
-# Translate the text
-translatedText = translateText(text, dest_language)
+@app.route("/translate", methods=["POST"])
+def translate():
+    text = request.form['text']
+    dest_language = request.form['dest_language']
+    translated_text = translateText(text, dest_language)
+    #return translated_text
+    return jsonify({'translation': translated_text})
 
-# Print the final translation
-print(f"Translation: {translatedText}")
+if __name__ == "__main__":
+    app.run(debug=True)
