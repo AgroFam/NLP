@@ -49,3 +49,17 @@ def translate():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+#  "Urdu" : "ur",
+#     "Assamese" : "as",
+#     "Meitei" : "mni",
+#     "Bodo" : "brx",
+#     "Khasi" : "kha",
+#     "Garo" : "grt",
+#     "Kokborok" : "trp",
+#     "Tripuri" : "tbw",
+#     "Mizo" : "lus",
+#     "Nagamese" : "nag",
+#     "Manipuri" : "mni",
+#     "Nepali" : "ne"
