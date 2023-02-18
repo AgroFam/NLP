@@ -1,3 +1,5 @@
+# Code using microsoft api
+
 from flask import Flask, request, jsonify
 import requests
 import json
