@@ -8,16 +8,22 @@ import json
 
 app = Flask(__name__)
 
+from bs4 import BeautifulSoup
+
 def translateText(text, language_codes):
     translations = {}
     for language, code in language_codes.items():
         try:
+            # Remove HTML tags from input text
+            soup = BeautifulSoup(text, 'html.parser')
+            text_without_tags = soup.get_text()
+
             # Detect the source language of the input text
-            src_language = langdetect.detect(text)
+            src_language = langdetect.detect(text_without_tags)
 
             # Divide the text into chunks of 500 characters as it max translation length is 500 char only
             chunk_size = 500
-            chunks = [text[i:i+chunk_size] for i in range(0, len(text), chunk_size)]
+            chunks = [text_without_tags[i:i+chunk_size] for i in range(0, len(text_without_tags), chunk_size)]
 
             # Translate each chunk and store the translations in a list
             translated_chunks = []
