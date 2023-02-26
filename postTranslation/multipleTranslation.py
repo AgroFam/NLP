@@ -70,4 +70,10 @@ if __name__ == "__main__":
 #     "Mizo" : "lus",
 #     "Nagamese" : "nag",
 #     "Manipuri" : "mni",
-#     "Nepali" : "ne"
+#     "Nepali" : "ne",
+# "Marathi" : "mr",
+#     "Gujarati" : "gu",
+#     "Punjabi" : "pa",
+#     "Malayalam" : "ml",
+#     "Kannada" : "kn",
+#     "Oriya" : "or"
