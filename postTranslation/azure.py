@@ -7,7 +7,7 @@ import json
 app = Flask(__name__)
 
 # Set up the endpoint and subscription key for the Microsoft Translator API
-translate_endpoint = "https://api.cognitive.microsofttranslator.com/translate"
+translate_endpoint = "https://api.cognitive.microsofttranslator.com/azureTranslation"
 translate_subscription_key = "YOUR_SUBSCRIPTION_KEY"
 
 def translate_text(text, dest_language):
@@ -56,8 +56,8 @@ def translate_text(text, dest_language):
 
     return final_translation
 
-@app.route("/translate", methods=["POST"])
-def translate():
+@app.route("/azureTranslation", methods=["POST"])
+def azureTranslation():
     text = request.form['text']
     dest_language = request.form['dest_language']
     translated_text = translate_text(text, dest_language)

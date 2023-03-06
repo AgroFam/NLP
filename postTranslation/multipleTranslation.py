@@ -42,8 +42,8 @@ def translateText(text, language_codes):
 
     return translations
 
-@app.route("/translate", methods=["POST"])
-def translate():
+@app.route("/multipleTranslation", methods=["POST"])
+def multipleTranslation():
     text = request.form['text']
 
     # Load the language codes from the JSON file

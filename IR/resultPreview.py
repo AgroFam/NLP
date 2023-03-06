@@ -17,7 +17,7 @@ base_url = "https://www.google.com/search?q={}&num=10"
 @app.route("/news")
 def news():
     # Get the query from the request args
-    query = request.args.get("q")
+    query = request.args.get("q","")
     if not query:
         return jsonify({"error": "Query parameter is required"}), 400
     
