@@ -30,7 +30,7 @@ def retrieve_search_results(url):
 
 @app.route("/news")
 def get_news():
-    query = request.args.get("q")
+    query = request.args.get("q","")
     if not query:
         return jsonify({"error": "No query provided"})
     base_url = "https://www.google.com/search?q={}&num=10"

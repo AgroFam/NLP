@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/news')
 def google_search():
-    query = request.args.get('query')
+    query = request.args.get('q','')
     print("Searching for:", query)
 
     # Set the base URL for the Google search
