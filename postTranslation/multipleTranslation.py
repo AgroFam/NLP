@@ -77,3 +77,6 @@ if __name__ == "__main__":
 #     "Malayalam" : "ml",
 #     "Kannada" : "kn",
 #     "Oriya" : "or"
+# "Bengali" : "bn",
+#     "Tamil" : "ta",
+#     "Telugu" : "te"
