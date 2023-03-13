@@ -1,14 +1,30 @@
-# Translate into multiple languages
-
+import html
+from googletrans import Translator
+import langdetect
+from bs4 import BeautifulSoup
 from flask import Flask, request, jsonify
 from translate import Translator
-import langdetect
 import requests
 import json
 
+
 app = Flask(__name__)
 
-from bs4 import BeautifulSoup
+from html.parser import HTMLParser
+
+class HTMLAwareParser(HTMLParser):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.text = ''
+
+    def handle_starttag(self, tag, attrs):
+        self.text += f'<{tag}>'
+
+    def handle_endtag(self, tag):
+        self.text += f'</{tag}>'
+
+    def handle_data(self, data):
+        self.text += data
 
 def translateText(text, language_codes):
     translations = {}
@@ -17,6 +33,10 @@ def translateText(text, language_codes):
             # Remove HTML tags from input text
             soup = BeautifulSoup(text, 'html.parser')
             text_without_tags = soup.get_text()
+
+            # Handle None values
+            if text_without_tags is None:
+                text_without_tags = ''
 
             # Detect the source language of the input text
             src_language = langdetect.detect(text_without_tags)
@@ -42,8 +62,10 @@ def translateText(text, language_codes):
 
     return translations
 
-@app.route("/multipleTranslation", methods=["POST"])
-def multipleTranslation():
+
+
+@app.route("/translate", methods=["POST"])
+def translate():
     text = request.form['text']
 
     # Load the language codes from the JSON file
@@ -57,26 +79,3 @@ def multipleTranslation():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-#  "Urdu" : "ur",
-#     "Assamese" : "as",
-#     "Meitei" : "mni",
-#     "Bodo" : "brx",
-#     "Khasi" : "kha",
-#     "Garo" : "grt",
-#     "Kokborok" : "trp",
-#     "Tripuri" : "tbw",
-#     "Mizo" : "lus",
-#     "Nagamese" : "nag",
-#     "Manipuri" : "mni",
-#     "Nepali" : "ne",
-# "Marathi" : "mr",
-#     "Gujarati" : "gu",
-#     "Punjabi" : "pa",
-#     "Malayalam" : "ml",
-#     "Kannada" : "kn",
-#     "Oriya" : "or"
-# "Bengali" : "bn",
-#     "Tamil" : "ta",
-#     "Telugu" : "te"
