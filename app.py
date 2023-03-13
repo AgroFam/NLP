@@ -15,4 +15,5 @@ app.add_url_rule('/searchImage', view_func=retrieve_search_results)
 app.add_url_rule('/', view_func=hello.hello)
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0', port={os.getenv('PORT')})
+   port = int(os.environ.get('PORT', 5000))
+   app.run(host='0.0.0.0', port=port)
