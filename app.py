@@ -15,4 +15,4 @@ app.add_url_rule('/searchImage', view_func=retrieve_search_results)
 app.add_url_rule('/', view_func=hello.hello)
 
 if __name__ == '__main__':
-   app.run()
+   app.run(host='0.0.0.0')
