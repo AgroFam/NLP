@@ -5,8 +5,10 @@ from postTranslation.translate import translate_text
 from IR.news import google_search
 from IR.linkImage import get_news
 import hello
+from waitress import serve
 
 app = Flask(__name__)
+print('Starting server...')
 
 app.add_url_rule('/azureTranslation', view_func=translate_text)
 app.add_url_rule('/translate', view_func=translate_text)
@@ -16,4 +18,4 @@ app.add_url_rule('/', view_func=hello.hello)
 
 if __name__ == '__main__':
    port = int(os.environ.get('PORT', 5000))
-   app.run(host='0.0.0.0', port=port)
+   serve(app, host='0.0.0.0', port=port)
