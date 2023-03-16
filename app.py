@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request
+from flask_cors import CORS
 from postTranslation.azure import translate_text
 from postTranslation.translate import translate_text
 from IR.news import google_search
@@ -8,6 +9,7 @@ import hello
 from waitress import serve
 
 app = Flask(__name__)
+CORS(app)
 print('Starting server...')
 
 app.add_url_rule('/azureTranslation', view_func=translate_text)
