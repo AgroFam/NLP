@@ -35,7 +35,9 @@ def get_news():
                 image_url = image.get("src")
             else:
                 image_url = None
-            results.append({"title": title, "link": link, "image_url": image_url})
+            if not any(domain in link for domain in ["facebook.com", "twitter.com", "instagram.com"]):
+                results.append({"title": title, "link": link, "image_url": image_url})
+           
         return results
 
 # @app.route("/searchImage")
