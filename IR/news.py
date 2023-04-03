@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/news')
+@app.route('/searchImage')
 def google_search():
     query = request.args.get("q"," ")
     print("Searching for:", query)
