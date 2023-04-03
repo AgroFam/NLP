@@ -14,7 +14,7 @@ print('Starting server...')
 
 app.add_url_rule('/azureTranslation', view_func=translate_text)
 app.add_url_rule('/translate', view_func=translate_text)
-app.add_url_rule('/searchImage', view_func=google_search)
+app.add_url_rule('/searchWeb', view_func=google_search)
 app.add_url_rule('/news', view_func=get_news)
 app.add_url_rule('/', view_func=hello.hello)
 
