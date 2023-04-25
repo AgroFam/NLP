@@ -4,7 +4,7 @@ from flask_cors import CORS
 from postTranslation.azure import translate_text
 from postTranslation.translate import translate_text
 from IR.news import google_search
-from IR.linkImage import get_news
+from IR.webQuery import get_news
 import hello
 from waitress import serve
 
