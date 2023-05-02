@@ -1,4 +1,25 @@
 {
     "English" : "en",
-    "Hindi" : "hi"
+    "Hindi" : "hi",
+    "Urdu" : "ur",
+    "Assamese" : "as",
+    "Meitei" : "mni",
+    "Bodo" : "brx",
+    "Khasi" : "kha",
+    "Garo" : "grt",
+    "Kokborok" : "trp",
+    "Tripuri" : "tbw",
+    "Mizo" : "lus",
+    "Nagamese" : "nag",
+    "Manipuri" : "mni",
+    "Nepali" : "ne",
+    "Marathi" : "mr",
+    "Gujarati" : "gu",
+    "Punjabi" : "pa",
+    "Malayalam" : "ml",
+    "Kannada" : "kn",
+    "Oriya" : "or",
+    "Bengali" : "bn",
+    "Tamil" : "ta",
+    "Telugu" : "te"
 }
