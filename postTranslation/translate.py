@@ -69,6 +69,9 @@ def translate(text, dest_languages):
 def translate_text():
     try:
         data = request.json
+        if data is None:
+            return jsonify({'error': 'Invalid JSON data in the request'}), 400
+
         if 'text' in data:
             text = data['text']
         else:
